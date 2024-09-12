@@ -7,74 +7,108 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Football Player Value Calculator</h1>
-    <form id="playerForm">
-        <label>Position:</label>
-        <select id="position" required>
-            <option value="striker">Striker</option>
-            <option value="winger">Winger</option>
-            <option value="attacking midfielder">Attacking Midfielder</option>
-            <option value="midfielder">Midfielder</option>
-            <option value="defender">Defender</option>
-            <option value="goalkeeper">Goalkeeper</option>
-        </select><br>
+    <div class="container">
+        <header>
+            <h1>Football Player Value Calculator</h1>
+        </header>
+        <main>
+            <form id="playerForm">
+                <div class="form-group">
+                    <label for="position">Position:</label>
+                    <select id="position" required>
+                        <option value="striker">Striker</option>
+                        <option value="winger">Winger</option>
+                        <option value="attacking midfielder">Attacking Midfielder</option>
+                        <option value="midfielder">Midfielder</option>
+                        <option value="defender">Defender</option>
+                        <option value="goalkeeper">Goalkeeper</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="goals">Goals:</label>
+                    <input type="number" id="goals" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="assists">Assists:</label>
+                    <input type="number" id="assists" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="keyPasses">Key Passes:</label>
+                    <input type="number" id="keyPasses" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tackles">Tackles:</label>
+                    <input type="number" id="tackles" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cleanSheets">Clean Sheets:</label>
+                    <input type="number" id="cleanSheets" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="injuries">Injuries:</label>
+                    <input type="number" id="injuries" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" value="25" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contractYears">Contract Years Left:</label>
+                    <input type="number" id="contractYears" value="3" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="marketability">Marketability:</label>
+                    <select id="marketability" required>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="demandLevel">Demand Level:</label>
+                    <select id="demandLevel" required>
+                        <option value="high">High</option>
+                        <option value="normal">Normal</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="league">League:</label>
+                    <select id="league" required>
+                        <option value="premier league">Premier League</option>
+                        <option value="la liga">La Liga</option>
+                        <option value="serie a">Serie A</option>
+                        <option value="bundesliga">Bundesliga</option>
+                        <option value="ligue 1">Ligue 1</option>
+                        <option value="belgian pro league">Belgian Pro League</option>
+                        <option value="eredivisie">Eredivisie</option>
+                        <option value="mls">MLS</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
 
-        <label>Goals:</label>
-        <input type="number" id="goals" value="0"><br>
+                <button type="button" onclick="calculateValue()">Calculate</button>
+            </form>
 
-        <label>Assists:</label>
-        <input type="number" id="assists" value="0"><br>
-
-        <label>Key Passes:</label>
-        <input type="number" id="keyPasses" value="0"><br>
-
-        <label>Tackles:</label>
-        <input type="number" id="tackles" value="0"><br>
-
-        <label>Clean Sheets:</label>
-        <input type="number" id="cleanSheets" value="0"><br>
-
-        <label>Injuries:</label>
-        <input type="number" id="injuries" value="0"><br>
-
-        <label>Age:</label>
-        <input type="number" id="age" value="25" required><br>
-
-        <label>Contract Years Left:</label>
-        <input type="number" id="contractYears" value="3" required><br>
-
-        <label>Marketability:</label>
-        <select id="marketability" required>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-        </select><br>
-
-        <label>Demand Level:</label>
-        <select id="demandLevel" required>
-            <option value="high">High</option>
-            <option value="normal">Normal</option>
-            <option value="low">Low</option>
-        </select><br>
-
-        <label>League:</label>
-        <select id="league" required>
-            <option value="premier league">Premier League</option>
-            <option value="la liga">La Liga</option>
-            <option value="serie a">Serie A</option>
-            <option value="bundesliga">Bundesliga</option>
-            <option value="ligue 1">Ligue 1</option>
-            <option value="belgian pro league">Belgian Pro League</option>
-            <option value="eredivisie">Eredivisie</option>
-            <option value="mls">MLS</option>
-            <option value="others">Others</option>
-        </select><br>
-
-        <button type="button" onclick="calculateValue()">Calculate</button>
-    </form>
-
-    <h2 id="playerValue"></h2>
-
+            <div class="result">
+                <h2 id="playerValue"></h2>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Football Player Value Calculator</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
