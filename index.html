@@ -9,47 +9,46 @@
 <body>
     <div class="container">
         <header>
-            <h1>Football Player Value Calculator</h1>
+            <h1>Player Value Calculator</h1>
         </header>
         <main>
-            <form id="calculatorForm">
-                <div class="form-group">
-                    <label for="position">Position</label>
-                    <select id="position" name="position">
-                        <option value="">Select Position</option>
-                        <option value="goalkeeper">Goalkeeper</option>
-                        <option value="centre-back">Centre Back</option>
-                        <option value="full-back">Full Back</option>
-                        <option value="defensive-midfielder">Defensive Midfielder</option>
-                        <option value="central-midfielder">Central Midfielder</option>
-                        <option value="attacking-midfielder">Attacking Midfielder</option>
-                        <option value="winger">Winger</option>
-                        <option value="striker">Striker</option>
-                    </select>
-                </div>
-                <div id="generalFields" class="form-group">
+            <form id="playerForm">
+                <label for="position">Position</label>
+                <select id="position" name="position">
+                    <option value="">Select Position</option>
+                    <option value="goalkeeper">Goalkeeper</option>
+                    <option value="centre-back">Centre Back</option>
+                    <option value="full-back">Full Back</option>
+                    <option value="defensive-midfielder">Defensive Midfielder</option>
+                    <option value="central-midfielder">Central Midfielder</option>
+                    <option value="attacking-midfielder">Attacking Midfielder</option>
+                    <option value="winger">Winger</option>
+                    <option value="striker">Striker</option>
+                </select>
+
+                <div id="generalFields">
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" step="0.1" min="16" max="40">
-
-                    <label for="marketability">Marketability (1-10)</label>
-                    <input type="number" id="marketability" name="marketability" step="1" min="1" max="10">
-
-                    <label for="demand">Demand (1-10)</label>
-                    <input type="number" id="demand" name="demand" step="1" min="1" max="10">
-
-                    <label for="injury">Injury (0-10)</label>
-                    <input type="number" id="injury" name="injury" step="1" min="0" max="10">
+                    <input type="number" id="age" name="age" step="0.1">
+                    
+                    <label for="marketability">Marketability</label>
+                    <input type="number" id="marketability" name="marketability" step="0.1">
+                    
+                    <label for="demand">Demand</label>
+                    <input type="number" id="demand" name="demand" step="0.1">
+                    
+                    <label for="injury">Injury (0 to 1, where 1 is major)</label>
+                    <input type="number" id="injury" name="injury" step="0.1" min="0" max="1">
                 </div>
 
                 <!-- Goalkeeper Fields -->
                 <div id="goalkeeperFields" class="performance-metrics">
-                    <label for="psxgMinusGoals">Post-Shot Expected Goals Minus Goals</label>
+                    <label for="psxgMinusGoals">Post-Shot Expected Goals - Goals</label>
                     <input type="number" id="psxgMinusGoals" name="psxgMinusGoals" step="0.1">
-                    
+
                     <label for="saves">Saves</label>
                     <input type="number" id="saves" name="saves" step="0.1">
 
-                    <label for="savePercentage">Save Percentage</label>
+                    <label for="savePercentage">Save Percentage (%)</label>
                     <input type="number" id="savePercentage" name="savePercentage" step="0.1">
 
                     <label for="cleanSheets">Clean Sheets</label>
@@ -64,13 +63,13 @@
                     <label for="tacklesWon">Tackles Won</label>
                     <input type="number" id="tacklesWon" name="tacklesWon" step="0.1">
 
-                    <label for="challengesWonPercentage">Challenges Won Percentage</label>
+                    <label for="challengesWonPercentage">Challenges Won Percentage (%)</label>
                     <input type="number" id="challengesWonPercentage" name="challengesWonPercentage" step="0.1">
 
                     <label for="interceptions">Interceptions</label>
                     <input type="number" id="interceptions" name="interceptions" step="0.1">
 
-                    <label for="aerialDuelsWonPercentage">Aerial Duels Won Percentage</label>
+                    <label for="aerialDuelsWonPercentage">Aerial Duels Won Percentage (%)</label>
                     <input type="number" id="aerialDuelsWonPercentage" name="aerialDuelsWonPercentage" step="0.1">
 
                     <label for="clearances">Clearances</label>
@@ -85,7 +84,7 @@
                     <label for="interceptions">Interceptions</label>
                     <input type="number" id="interceptions" name="interceptions" step="0.1">
 
-                    <label for="challengesWonPercentage">Challenges Won Percentage</label>
+                    <label for="challengesWonPercentage">Challenges Won Percentage (%)</label>
                     <input type="number" id="challengesWonPercentage" name="challengesWonPercentage" step="0.1">
 
                     <label for="tacklesWon">Tackles Won</label>
@@ -112,7 +111,7 @@
                     <label for="ballRecoveries">Ball Recoveries</label>
                     <input type="number" id="ballRecoveries" name="ballRecoveries" step="0.1">
 
-                    <label for="challengesWonPercentage">Challenges Won Percentage</label>
+                    <label for="challengesWonPercentage">Challenges Won Percentage (%)</label>
                     <input type="number" id="challengesWonPercentage" name="challengesWonPercentage" step="0.1">
 
                     <label for="passesBlocked">Passes Blocked</label>
@@ -236,12 +235,12 @@
                     <input type="number" id="keyPasses" name="keyPasses" step="0.1">
                 </div>
 
-                <button type="button" onclick="calculatePlayerValue()">Calculate Value</button>
+                <button type="button" onclick="calculateValue()">Calculate</button>
             </form>
-            <div id="result"></div>
+            <p id="result"></p>
         </main>
         <footer>
-            <p>Player Value Calculator &copy; 2024</p>
+            <p>&copy; 2024 Player Value Calculator</p>
         </footer>
     </div>
     <script src="script.js"></script>
