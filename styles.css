@@ -1,17 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
-    background: #fff;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -19,12 +13,7 @@ header {
 }
 
 h1 {
-    color: #2d89ef;
-    font-size: 24px;
-}
-
-form {
-    margin: 20px 0;
+    font-size: 2rem;
 }
 
 .form-group {
@@ -33,38 +22,11 @@ form {
 
 label {
     display: block;
-    font-size: 14px;
-    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-input, select {
+input[type="number"], select {
     width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #2d89ef;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #1c6dcf;
-}
-
-.result {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
+    padding: 8px;
+    font-size: 1rem;
 }
