@@ -34,10 +34,10 @@ function calculatePlayerValue() {
     const position = document.getElementById('position').value;
     let value = 0;
 
-    const age = parseFloat(document.getElementById('age').value);
-    const marketability = parseFloat(document.getElementById('marketability').value);
-    const demand = parseFloat(document.getElementById('demand').value);
-    const injury = parseFloat(document.getElementById('injury').value);
+    const age = parseFloat(document.getElementById('age').value) || 0;
+    const marketability = parseFloat(document.getElementById('marketability').value) || 0;
+    const demand = parseFloat(document.getElementById('demand').value) || 0;
+    const injury = parseFloat(document.getElementById('injury').value) || 0;
 
     // Get relevant metrics for the selected position
     const getMetricValue = (id) => parseFloat(document.getElementById(id).value) || 0;
@@ -79,7 +79,7 @@ function calculatePlayerValue() {
         const totalPassingDistance = getMetricValue('totalPassingDistance');
         const progressivePassingDistance = getMetricValue('progressivePassingDistance');
 
-        value = (interceptions * 4) + (tacklesWon * 3) + (ballRecoveries * 2) + (challengesWonPercentage * 2) + (passesBlocked * 1.5) + (passingAccuracy * 1.2) + (progressiveCarries * 1.5) + (totalPassingDistance * 1.5) + (progressivePassingDistance * 1.5);
+        value = (interceptions * 2) + (tacklesWon * 2) + (ballRecoveries * 2) + (challengesWonPercentage * 1.5) + (passesBlocked * 1.5) + (passingAccuracy * 1.2) + (progressiveCarries * 2) + (totalPassingDistance * 1) + (progressivePassingDistance * 2);
     } else if (position === 'central-midfielder') {
         const passingAccuracy = getMetricValue('passingAccuracy');
         const progressiveCarries = getMetricValue('progressiveCarries');
@@ -90,7 +90,7 @@ function calculatePlayerValue() {
         const interceptions = getMetricValue('interceptions');
         const tacklesWon = getMetricValue('tacklesWon');
 
-        value = (passingAccuracy * 4) + (progressiveCarries * 3) + (totalPassingDistance * 2) + (progressivePassingDistance * 2) + (ballRecoveries * 2) + (passesBlocked * 1.5) + (interceptions * 2) + (tacklesWon * 1.5);
+        value = (passingAccuracy * 2) + (progressiveCarries * 2) + (totalPassingDistance * 1.5) + (progressivePassingDistance * 2) + (ballRecoveries * 1.5) + (passesBlocked * 1.5) + (interceptions * 1.5) + (tacklesWon * 1.5);
     } else if (position === 'attacking-midfielder') {
         const assists = getMetricValue('assists');
         const keyPasses = getMetricValue('keyPasses');
@@ -100,7 +100,7 @@ function calculatePlayerValue() {
         const dribblesCompleted = getMetricValue('dribblesCompleted');
         const goals = getMetricValue('goals');
 
-        value = (assists * 3) + (keyPasses * 2) + (chancesCreated * 2) + (shotCreatingActions * 2) + (passAccuracy * 1.5) + (dribblesCompleted * 1.5) + (goals * 3);
+        value = (assists * 2) + (keyPasses * 2) + (chancesCreated * 2) + (shotCreatingActions * 2) + (passAccuracy * 1.5) + (dribblesCompleted * 1.5) + (goals * 2);
     } else if (position === 'winger') {
         const crossesCompleted = getMetricValue('crossesCompleted');
         const assists = getMetricValue('assists');
@@ -112,7 +112,7 @@ function calculatePlayerValue() {
         const chancesCreated = getMetricValue('chancesCreated');
         const passAccuracy = getMetricValue('passAccuracy');
 
-        value = (crossesCompleted * 2) + (assists * 2) + (dribblesCompleted * 2) + (successfulTakeOns * 2) + (crossAccuracy * 1.5) + (keyPasses * 1.5) + (goals * 3) + (chancesCreated * 2) + (passAccuracy * 1.2);
+        value = (crossesCompleted * 2) + (assists * 2) + (dribblesCompleted * 1.5) + (successfulTakeOns * 2) + (crossAccuracy * 1.5) + (keyPasses * 2) + (goals * 2) + (chancesCreated * 1.5) + (passAccuracy * 1.2);
     } else if (position === 'striker') {
         const goals = getMetricValue('goals');
         const shotsOnTarget = getMetricValue('shotsOnTarget');
@@ -122,12 +122,15 @@ function calculatePlayerValue() {
         const dribblesCompleted = getMetricValue('dribblesCompleted');
         const keyPasses = getMetricValue('keyPasses');
 
-        value = (goals * 5) + (shotsOnTarget * 2) + (conversionRate * 2) + (assists * 2) + (xgOverperformance * 1.5) + (dribblesCompleted * 1) + (keyPasses * 1);
+        value = (goals * 3) + (shotsOnTarget * 1.5) + (conversionRate * 2) + (assists * 2) + (xgOverperformance * 1.5) + (dribblesCompleted * 1.5) + (keyPasses * 1.5);
     }
 
-    // Apply age effect (higher value for younger players)
-    const ageFactor = Math.max(0, 30 - age) * 1000; // Assuming age 30 as the threshold for value decrease
-    value += ageFactor;
+    // Incorporate general factors
+    value += (age < 25 ? 10 : 5) + (marketability * 2) + (demand * 2) - (injury * 1.5);
 
-    // Apply marketability and demand effects
-    value *= 1 + (marketability - 5) * 0
+    // Display the result
+    document.getElementById('result').innerText = `Estimated Player Value: €${value.toFixed(2)}`;
+}
+
+// Hide all performance metrics by default
+document.querySelectorAll('.performance-metrics').forEach(group => group.style.display = 'none');
