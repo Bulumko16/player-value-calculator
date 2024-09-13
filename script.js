@@ -1,94 +1,50 @@
-function calculatePerformance(position, goals, assists, keyPasses, tackles, cleanSheets, injuries) {
-    let performanceScore = 0;
-    switch (position) {
-        case 'striker':
-        case 'winger':
-            performanceScore = (goals * 4) + (assists * 3) + (keyPasses * 1) - (injuries * 5);
-            break;
-        case 'midfielder':
-        case 'attacking midfielder':
-            performanceScore = (goals * 2) + (assists * 3) + (keyPasses * 2) + (tackles * 2) - (injuries * 5);
-            break;
-        case 'defender':
-            performanceScore = (cleanSheets * 3) + (tackles * 3) + (assists * 1) - (injuries * 5);
-            break;
-        case 'goalkeeper':
-            performanceScore = (cleanSheets * 5) - (injuries * 5);
-            break;
+function showRelevantFields() {
+    // Hide all fields initially
+    const fieldGroups = document.querySelectorAll('.performance-metrics');
+    fieldGroups.forEach(group => group.style.display = 'none');
+    
+    const position = document.getElementById('position').value;
+    
+    // Show only the relevant fields
+    if (position === 'goalkeeper') {
+        document.getElementById('goalkeeperFields').style.display = 'block';
+    } else if (position === 'centre-back') {
+        document.getElementById('centreBackFields').style.display = 'block';
+    } else if (position === 'full-back') {
+        document.getElementById('fullBackFields').style.display = 'block';
     }
-    return Math.max(performanceScore, 0);
-}
-
-function ageFactor(age) {
-    return age <= 21 ? 1.2 : age <= 28 ? 1.0 : 0.8;
-}
-
-function contractFactor(contractYears) {
-    return contractYears >= 3 ? 1.5 : contractYears >= 1 ? 1.0 : 0.5;
-}
-
-function marketabilityFactor(marketability) {
-    return marketability === 'high' ? 1.3 : marketability === 'medium' ? 1.0 : 0.8;
-}
-
-function positionMultiplier(position) {
-    switch (position) {
-        case 'striker': return 1.5;
-        case 'winger': case 'attacking midfielder': return 1.3;
-        case 'midfielder': return 1.1;
-        case 'defender': return 1.0;
-        case 'goalkeeper': return 0.9;
-    }
-}
-
-function demandFactor(demandLevel) {
-    return demandLevel === 'high' ? 1.3 : demandLevel === 'normal' ? 1.0 : 0.7;
-}
-
-function leagueFactor(league) {
-    const leagueMultipliers = {
-        'premier league': 1.5,
-        'la liga': 1.4,
-        'serie a': 1.3,
-        'bundesliga': 1.3,
-        'ligue 1': 1.2,
-        'belgian pro league': 1.0,
-        'eredivisie': 1.0,
-        'mls': 0.9,
-        'others': 0.8
-    };
-    return leagueMultipliers[league] || 0.8;
+    // Continue for other positions...
 }
 
 function calculateValue() {
-    // Get values from the form
     const position = document.getElementById('position').value;
-    const goals = parseInt(document.getElementById('goals').value);
-    const assists = parseInt(document.getElementById('assists').value);
-    const keyPasses = parseInt(document.getElementById('keyPasses').value);
-    const tackles = parseInt(document.getElementById('tackles').value);
-    const cleanSheets = parseInt(document.getElementById('cleanSheets').value);
-    const injuries = parseInt(document.getElementById('injuries').value);
-    const age = parseInt(document.getElementById('age').value);
-    const contractYears = parseInt(document.getElementById('contractYears').value);
+    let performanceScore = 0;
+
+    if (position === 'goalkeeper') {
+        const psxg = parseFloat(document.getElementById('psxg').value);
+        const saves = parseFloat(document.getElementById('saves').value);
+        const savePercentage = parseFloat(document.getElementById('savePercentage').value);
+        const cleanSheets = parseFloat(document.getElementById('cleanSheets').value);
+        const passAccuracy = parseFloat(document.getElementById('passAccuracy').value);
+        performanceScore = (psxg * 4) + (saves * 3) + (savePercentage * 2) + (cleanSheets * 1.5) + (passAccuracy * 0.5);
+    } else if (position === 'centre-back') {
+        const tacklesWon = parseFloat(document.getElementById('tacklesWon').value);
+        const challengesWon = parseFloat(document.getElementById('challengesWon').value);
+        const interceptions = parseFloat(document.getElementById('interceptions').value);
+        const aerialDuelsWon = parseFloat(document.getElementById('aerialDuelsWon').value);
+        const clearances = parseFloat(document.getElementById('clearances').value);
+        const blockedShots = parseFloat(document.getElementById('blockedShots').value);
+        performanceScore = (tacklesWon * 4) + (challengesWon * 3) + (interceptions * 3) + (aerialDuelsWon * 2) + (clearances * 1.5) + (blockedShots * 1);
+    }
+    // Continue for other positions...
+
     const marketability = document.getElementById('marketability').value;
     const demandLevel = document.getElementById('demandLevel').value;
-    const league = document.getElementById('league').value;
 
-    // Calculate individual factors
-    const P = calculatePerformance(position, goals, assists, keyPasses, tackles, cleanSheets, injuries);
-    const A = ageFactor(age);
-    const C = contractFactor(contractYears);
-    const M = marketabilityFactor(marketability);
-    const Pos = positionMultiplier(position);
-    const D = demandFactor(demandLevel);
-    const L = leagueFactor(league);
-
-    // Final value calculation
-    const baseValue = P * A * C * M * Pos * D * L;
-    const multiplier = 209383.6396161978;
-    const playerValueEuros = baseValue * multiplier;
-
-    // Display the result
-    document.getElementById('playerValue').textContent = `Player Value: €${playerValueEuros.toFixed(2)}`;
+    // Adjust the weight of marketability and demand
+    let marketMultiplier = marketability === 'high' ? 1.1 : marketability === 'medium' ? 1.05 : 1;
+    let demandMultiplier = demandLevel === 'high' ? 1.2 : demandLevel === 'medium' ? 1.1 : 1;
+    
+    const finalValue = performanceScore * 209383.6396161978 * marketMultiplier * demandMultiplier;
+    document.getElementById('playerValue').innerText = `Estimated Value: €${finalValue.toFixed(2)}`;
 }
