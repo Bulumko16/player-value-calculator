@@ -6,32 +6,21 @@ function showRelevantFields() {
     fieldGroups.forEach(group => group.style.display = 'none');
 
     // Show relevant fields based on position
-    switch (position) {
-        case 'goalkeeper':
-            document.getElementById('goalkeeperFields').style.display = 'block';
-            break;
-        case 'centre-back':
-            document.getElementById('centreBackFields').style.display = 'block';
-            break;
-        case 'full-back':
-            document.getElementById('fullBackFields').style.display = 'block';
-            break;
-        case 'defensive-midfielder':
-            document.getElementById('defensiveMidfielderFields').style.display = 'block';
-            break;
-        case 'central-midfielder':
-            document.getElementById('centralMidfielderFields').style.display = 'block';
-            break;
-        case 'attacking-midfielder':
-            document.getElementById('attackingMidfielderFields').style.display = 'block';
-            break;
-        case 'winger':
-            document.getElementById('wingerFields').style.display = 'block';
-            break;
-        case 'striker':
-            document.getElementById('strikerFields').style.display = 'block';
-            break;
-        default:
-            break;
+    if (position === 'goalkeeper') {
+        document.getElementById('goalkeeperFields').style.display = 'block';
+    } else if (position === 'centre-back') {
+        document.getElementById('centreBackFields').style.display = 'block';
+    } else if (position === 'full-back') {
+        document.getElementById('fullBackFields').style.display = 'block';
+    } else if (position === 'defensive-midfielder') {
+        document.getElementById('defensiveMidfielderFields').style.display = 'block';
+    } else if (position === 'central-midfielder') {
+        document.getElementById('centralMidfielderFields').style.display = 'block';
+    } else if (position === 'attacking-midfielder') {
+        document.getElementById('attackingMidfielderFields').style.display = 'block';
+    } else if (position === 'winger') {
+        document.getElementById('wingerFields').style.display = 'block';
+    } else if (position === 'striker') {
+        document.getElementById('strikerFields').style.display = 'block';
     }
 }
