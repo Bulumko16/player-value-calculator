@@ -26,8 +26,8 @@
                         <option value="striker">Striker</option>
                     </select>
                 </div>
-                
-                <!-- Goalkeeper Metrics -->
+
+                <!-- Goalkeeper Fields -->
                 <div id="goalkeeperFields" class="performance-metrics">
                     <div class="form-group">
                         <label for="psxg">Post-shot Expected Goals Minus Goals:</label>
@@ -50,8 +50,8 @@
                         <input type="number" id="passAccuracy" value="0">
                     </div>
                 </div>
-                
-                <!-- Centre Back Metrics -->
+
+                <!-- Centre Back Fields -->
                 <div id="centreBackFields" class="performance-metrics">
                     <div class="form-group">
                         <label for="tacklesWon">Tackles Won:</label>
@@ -78,8 +78,8 @@
                         <input type="number" id="blockedShots" value="0">
                     </div>
                 </div>
-                
-                <!-- Full Back Metrics -->
+
+                <!-- Full Back Fields -->
                 <div id="fullBackFields" class="performance-metrics">
                     <div class="form-group">
                         <label for="crossesCompleted">Crosses Completed:</label>
@@ -110,20 +110,199 @@
                         <input type="number" id="clearances" value="0">
                     </div>
                 </div>
-                
-                <!-- Similar sections for Defensive Midfielder, Central Midfielder, Attacking Midfielder, Winger, Striker -->
-                
-                <button type="button" onclick="calculateValue()">Calculate</button>
+
+                <!-- Defensive Midfielder Fields -->
+                <div id="defensiveMidfielderFields" class="performance-metrics">
+                    <div class="form-group">
+                        <label for="interceptions">Interceptions:</label>
+                        <input type="number" id="interceptions" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="tacklesWon">Tackles Won:</label>
+                        <input type="number" id="tacklesWon" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="ballRecoveries">Ball Recoveries:</label>
+                        <input type="number" id="ballRecoveries" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="challengesWon">Challenges Won Percentage:</label>
+                        <input type="number" id="challengesWon" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="passesBlocked">Passes Blocked:</label>
+                        <input type="number" id="passesBlocked" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="passAccuracy">Pass Accuracy:</label>
+                        <input type="number" id="passAccuracy" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="progressiveCarries">Progressive Carries:</label>
+                        <input type="number" id="progressiveCarries" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPassingDistance">Total Passing Distance:</label>
+                        <input type="number" id="totalPassingDistance" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="progressivePassingDistance">Progressive Passing Distance:</label>
+                        <input type="number" id="progressivePassingDistance" value="0">
+                    </div>
+                </div>
+
+                <!-- Central Midfielder Fields -->
+                <div id="centralMidfielderFields" class="performance-metrics">
+                    <div class="form-group">
+                        <label for="passAccuracy">Pass Accuracy:</label>
+                        <input type="number" id="passAccuracy" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="progressiveCarries">Progressive Carries:</label>
+                        <input type="number" id="progressiveCarries" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPassingDistance">Total Passing Distance:</label>
+                        <input type="number" id="totalPassingDistance" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="progressivePassingDistance">Progressive Passing Distance:</label>
+                        <input type="number" id="progressivePassingDistance" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="ballRecoveries">Ball Recoveries:</label>
+                        <input type="number" id="ballRecoveries" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="passesBlocked">Passes Blocked:</label>
+                        <input type="number" id="passesBlocked" value="0">
+                    </div>
+                </div>
+
+                <!-- Attacking Midfielder Fields -->
+                <div id="attackingMidfielderFields" class="performance-metrics">
+                    <div class="form-group">
+                        <label for="assists">Assists:</label>
+                        <input type="number" id="assists" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="keyPasses">Key Passes:</label>
+                        <input type="number" id="keyPasses" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="chancesCreated">Chances Created:</label>
+                        <input type="number" id="chancesCreated" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="shotCreatingActions">Shot Creating Actions:</label>
+                        <input type="number" id="shotCreatingActions" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="passAccuracy">Pass Accuracy:</label>
+                        <input type="number" id="passAccuracy" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dribblesCompleted">Dribbles Completed:</label>
+                        <input type="number" id="dribblesCompleted" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Goals:</label>
+                        <input type="number" id="goals" value="0">
+                    </div>
+                </div>
+
+                <!-- Winger Fields -->
+                <div id="wingerFields" class="performance-metrics">
+                    <div class="form-group">
+                        <label for="crossesCompleted">Crosses Completed:</label>
+                        <input type="number" id="crossesCompleted" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="assists">Assists:</label>
+                        <input type="number" id="assists" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dribblesCompleted">Dribbles Completed:</label>
+                        <input type="number" id="dribblesCompleted" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="takeOns">Successful Take Ons:</label>
+                        <input type="number" id="takeOns" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="crossesAccuracy">Crosses Accuracy:</label>
+                        <input type="number" id="crossesAccuracy" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="keyPasses">Key Passes:</label>
+                        <input type="number" id="keyPasses" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Goals:</label>
+                        <input type="number" id="goals" value="0">
+                    </div>
+                </div>
+
+                <!-- Striker Fields -->
+                <div id="strikerFields" class="performance-metrics">
+                    <div class="form-group">
+                        <label for="goals">Goals:</label>
+                        <input type="number" id="goals" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="shotsOnTarget">Shots on Target:</label>
+                        <input type="number" id="shotsOnTarget" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="conversionRate">Conversion Rate:</label>
+                        <input type="number" id="conversionRate" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="assists">Assists:</label>
+                        <input type="number" id="assists" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="xgOverperformance">xG Overperformance:</label>
+                        <input type="number" id="xgOverperformance" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="dribblesCompleted">Dribbles Completed:</label>
+                        <input type="number" id="dribblesCompleted" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="keyPasses">Key Passes:</label>
+                        <input type="number" id="keyPasses" value="0">
+                    </div>
+                </div>
+
+                <!-- Common Fields -->
+                <div class="form-group">
+                    <label for="marketability">Marketability (low, medium, high):</label>
+                    <select id="marketability">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="demandLevel">Demand Level (low, medium, high):</label>
+                    <select id="demandLevel">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button type="button" onclick="calculatePlayerValue()">Calculate Player Value</button>
             </form>
 
-            <div class="result">
-                <h2 id="playerValue"></h2>
-            </div>
+            <div id="playerValue" class="result"></div>
         </main>
         <footer>
-            <p>&copy; 2024 Football Player Value Calculator</p>
+            <p>Football Player Value Calculator</p>
         </footer>
     </div>
-    <script src="script.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
