@@ -1,11 +1,13 @@
+document.getElementById('position').addEventListener('change', showRelevantFields);
+
 function showRelevantFields() {
     const position = document.getElementById('position').value;
 
-    // Hide all field groups initially
+    // Hide all field groups
     const fieldGroups = document.querySelectorAll('.performance-metrics');
     fieldGroups.forEach(group => group.style.display = 'none');
 
-    // Show relevant fields based on position
+    // Show the relevant fields based on the position
     if (position === 'goalkeeper') {
         document.getElementById('goalkeeperFields').style.display = 'block';
     } else if (position === 'centre-back') {
